@@ -1,6 +1,4 @@
 (ns romeo.web-routes
-  (:require
-    [clojure.java.io :as io])
   (:use
     [ring.util.response     ]
     [ring.middleware.json   ]
@@ -43,14 +41,22 @@
 
   (GET "/" []
        (banner "GET HOMEPAGE")
-       (resource-response "homepage.html" {:root ""}))
+       (resource-response "homepage.html" {:root "public/homepage"}))
 
 
-;;; ======================= ;;;
-;;;                         ;;;
-;;;    Homepage Requests    ;;;
-;;;                         ;;;
-;;; ======================= ;;;
+;;; =================== ;;;
+;;;                     ;;;
+;;;    Data Requests    ;;;
+;;;                     ;;;
+;;; =================== ;;;
 
-
+  (POST "/" [user :as {req-doc :params
+                       user-ip :remote-addr}]
+        (banner "POST A GAME REQUEST")
+        (add-body
+          (if (or (nil? user) (nil? user-ip))
+            {:status "Request failed"}
+            {:user user
+             :user-ip user-ip
+             :status "Request succeeded"})))
 )

@@ -1,6 +1,6 @@
 (ns romeo.server
   (:require [ring.adapter.jetty :refer [run-jetty]])
-  (:use [ring.middleware format reload stacktrace file file-info]
+  (:use [ring.middleware format reload stacktrace file file-info resource]
         [romeo.config]
         [romeo.web-routes])
   (:gen-class))
@@ -18,8 +18,7 @@
 (def app
   (->  app-routes
     (wrap-reload '(romeo.server romeo.web-routes))
-    ;(wrap-file "resources")
-    (wrap-file-info)
+    (wrap-resource "public")
     (wrap-restful-format :formats [:json-kw :edn :yaml-kw :yaml-in-html])
     (wrap-stacktrace)))
 
