@@ -43,8 +43,7 @@
 
   (GET "/" []
        (banner "GET HOMEPAGE")
-       (clojure.java.io/resource "homepage.html"))
-;       (file-response "homepage.html" {:root "resources"}))
+       (resource-response "homepage.html" {:root ""}))
 
 
 ;;; ======================= ;;;

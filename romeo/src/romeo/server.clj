@@ -18,7 +18,7 @@
 (def app
   (->  app-routes
     (wrap-reload '(romeo.server romeo.web-routes))
-    (wrap-file "resources")
+    ;(wrap-file "resources")
     (wrap-file-info)
     (wrap-restful-format :formats [:json-kw :edn :yaml-kw :yaml-in-html])
     (wrap-stacktrace)))
