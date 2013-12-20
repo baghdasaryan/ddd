@@ -21,7 +21,7 @@
     <option_android_arch_x86>true</option_android_arch_x86>
     <option_android_build_version>0</option_android_build_version>
     <option_android_color_depth>0</option_android_color_depth>
-    <option_android_display_name>ddd</option_android_display_name>
+    <option_android_display_name>physics test</option_android_display_name>
     <option_android_flurry_enable>false</option_android_flurry_enable>
     <option_android_flurry_id></option_android_flurry_id>
     <option_android_google_analytics_enable>false</option_android_google_analytics_enable>
@@ -56,7 +56,7 @@
     <option_android_ouya_icon>Configs\Default\android\icons\ouyaIcon.png</option_android_ouya_icon>
     <option_android_package_company>companyname</option_android_package_company>
     <option_android_package_domain>com</option_android_package_domain>
-    <option_android_package_product>ddd</option_android_package_product>
+    <option_android_package_product>physics_test</option_android_package_product>
     <option_android_permission_flags>8</option_android_permission_flags>
     <option_android_pocketchange_enable>false</option_android_pocketchange_enable>
     <option_android_pocketchange_id></option_android_pocketchange_id>
@@ -80,8 +80,8 @@
     <option_frequency>0</option_frequency>
     <option_frontimage>nil</option_frontimage>
     <option_fullscreen>false</option_fullscreen>
-    <option_gameguid>{7E393AD2-87BC-4FE1-AFD8-1F545FBACF18}</option_gameguid>
-    <option_gameid>808254885</option_gameid>
+    <option_gameguid>{B90D9A2C-3562-4782-9E69-D024ADB474C5}</option_gameguid>
+    <option_gameid>469658778</option_gameid>
     <option_haptic_effects>false</option_haptic_effects>
     <option_hasloadimage>false</option_hasloadimage>
     <option_helpkey>true</option_helpkey>
@@ -125,7 +125,7 @@
     <option_ios_build_version>0</option_ios_build_version>
     <option_ios_certificate></option_ios_certificate>
     <option_ios_device_type>3</option_ios_device_type>
-    <option_ios_display_name>ddd</option_ios_display_name>
+    <option_ios_display_name>physics test</option_ios_display_name>
     <option_ios_flurry_enable>false</option_ios_flurry_enable>
     <option_ios_flurry_id></option_ios_flurry_id>
     <option_ios_google_analytics_enable>false</option_ios_google_analytics_enable>
@@ -158,7 +158,7 @@
     <option_ios_texture_page>1024</option_ios_texture_page>
     <option_ios_use_test_ads>false</option_ios_use_test_ads>
     <option_lastchanged></option_lastchanged>
-    <option_linux_display_name>ddd</option_linux_display_name>
+    <option_linux_display_name>physics test</option_linux_display_name>
     <option_linux_enable_steam>false</option_linux_enable_steam>
     <option_linux_fullscreen>false</option_linux_fullscreen>
     <option_linux_icon>Configs\Default\linux\icon64.png</option_linux_icon>
@@ -179,7 +179,7 @@
     <option_mac_build_version>0</option_mac_build_version>
     <option_mac_copyright_info>(c)2012 CompanyName Ltd...</option_mac_copyright_info>
     <option_mac_create_app_store>true</option_mac_create_app_store>
-    <option_mac_display_name>ddd</option_mac_display_name>
+    <option_mac_display_name>physics test</option_mac_display_name>
     <option_mac_enable_steam>false</option_mac_enable_steam>
     <option_mac_fullscreen>false</option_mac_fullscreen>
     <option_mac_icon_png>Configs\Default\mac\icon512.png</option_mac_icon_png>
@@ -187,7 +187,7 @@
     <option_mac_major_version>1</option_mac_major_version>
     <option_mac_menu_dock>false</option_mac_menu_dock>
     <option_mac_minor_version>0</option_mac_minor_version>
-    <option_mac_output_dir>~/GameMaker-Studio/ddd</option_mac_output_dir>
+    <option_mac_output_dir>~/GameMaker-Studio/physics test</option_mac_output_dir>
     <option_mac_scale>-1</option_mac_scale>
     <option_mac_screenkey>true</option_mac_screenkey>
     <option_mac_showcursor>true</option_mac_showcursor>
@@ -220,9 +220,9 @@
     <option_textureGroup0_targets>$7fffffffffffffff</option_textureGroup0_targets>
     <option_textureGroup_count>1</option_textureGroup_count>
     <option_textureGroups0>Default</option_textureGroups0>
-    <option_tizen_app_id>http://yourdomain/ddd</option_tizen_app_id>
+    <option_tizen_app_id>http://yourdomain/physics test</option_tizen_app_id>
     <option_tizen_build_version>0</option_tizen_build_version>
-    <option_tizen_display_name>ddd</option_tizen_display_name>
+    <option_tizen_display_name>physics test</option_tizen_display_name>
     <option_tizen_flurry_enable>false</option_tizen_flurry_enable>
     <option_tizen_flurry_id></option_tizen_flurry_id>
     <option_tizen_google_analytics_enable>false</option_tizen_google_analytics_enable>
@@ -236,7 +236,7 @@
     <option_tizen_splash_png>Configs\Default\tizen\splash.png</option_tizen_splash_png>
     <option_tizen_texture_page>1024</option_tizen_texture_page>
     <option_tizen_usesplash>false</option_tizen_usesplash>
-    <option_use_new_audio>true</option_use_new_audio>
+    <option_use_new_audio>false</option_use_new_audio>
     <option_variableerrors>false</option_variableerrors>
     <option_version>100</option_version>
     <option_version_build>0</option_version_build>
@@ -256,7 +256,7 @@
     <option_win8_analytics_id></option_win8_analytics_id>
     <option_win8_build_version>0</option_win8_build_version>
     <option_win8_certificate_location>Windows8_TemporaryKey.pfx</option_win8_certificate_location>
-    <option_win8_display_name>ddd</option_win8_display_name>
+    <option_win8_display_name>physics test</option_win8_display_name>
     <option_win8_internet_capable>false</option_win8_internet_capable>
     <option_win8_interpolate>true</option_win8_interpolate>
     <option_win8_landscape_allowed>true</option_win8_landscape_allowed>
@@ -322,7 +322,7 @@
     <option_winphone_cycle_wide_image_8>Configs\Default\WinPhone\CycleWide8.png</option_winphone_cycle_wide_image_8>
     <option_winphone_cycle_wide_image_9>Configs\Default\WinPhone\CycleWide9.png</option_winphone_cycle_wide_image_9>
     <option_winphone_description>YourDescription</option_winphone_description>
-    <option_winphone_display_name>ddd</option_winphone_display_name>
+    <option_winphone_display_name>physics test</option_winphone_display_name>
     <option_winphone_flip_content_back></option_winphone_flip_content_back>
     <option_winphone_flip_content_front></option_winphone_flip_content_front>
     <option_winphone_flip_medium_back_image>Configs\Default\WinPhone\FlipMedBack.png</option_winphone_flip_medium_back_image>

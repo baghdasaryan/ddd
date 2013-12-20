@@ -4,10 +4,91 @@
     <Config>Configs\Default</Config>
   </Configs>
   <NewExtensions/>
-  <sounds name="sound"/>
-  <sprites name="sprites"/>
-  <backgrounds name="background"/>
+  <sounds name="sound">
+    <sounds name="songs">
+      <sound>sound\AngryRobotIII</sound>
+      <sound>sound\Everstar</sound>
+    </sounds>
+  </sounds>
+  <sprites name="sprites">
+    <sprites name="game">
+      <sprite>sprites\sBox</sprite>
+      <sprite>sprites\sBoxHighlight</sprite>
+      <sprite>sprites\sCircle</sprite>
+      <sprite>sprites\sCircleExplosion</sprite>
+      <sprite>sprites\sCircleHighlight</sprite>
+      <sprite>sprites\sCircleWarp</sprite>
+      <sprite>sprites\sWall</sprite>
+      <sprite>sprites\sWarpBlue</sprite>
+      <sprite>sprites\sWarpRed</sprite>
+      <sprite>sprites\sZone</sprite>
+    </sprites>
+    <sprites name="menu">
+      <sprite>sprites\sCreateServer</sprite>
+      <sprite>sprites\sCreateServerHighlight</sprite>
+      <sprite>sprites\sDisconnect</sprite>
+      <sprite>sprites\sExit</sprite>
+      <sprite>sprites\sLogo</sprite>
+      <sprite>sprites\sRestart</sprite>
+      <sprite>sprites\sTextBox</sprite>
+    </sprites>
+  </sprites>
+  <backgrounds name="background">
+    <background>background\galaxy</background>
+  </backgrounds>
   <paths name="paths"/>
+  <scripts name="scripts">
+    <script>scripts\ConnectDisconnectClient.gml</script>
+    <script>scripts\SendKeepAlive.gml</script>
+    <script>scripts\SendKey.gml</script>
+    <script>scripts\ServerRecievedData.gml</script>
+  </scripts>
+  <fonts name="fonts">
+    <font>fonts\fMenu</font>
+    <font>fonts\fPlayer</font>
+    <font>fonts\fStatus</font>
+    <font>fonts\fTimer</font>
+  </fonts>
+  <objects name="objects">
+    <objects name="menu">
+      <object>objects\oClient</object>
+      <object>objects\oCreateServerButton</object>
+      <object>objects\oExitRestart</object>
+      <object>objects\oLogo</object>
+      <object>objects\oMenu</object>
+      <object>objects\oServer</object>
+    </objects>
+    <objects name="game">
+      <object>objects\oBox</object>
+      <object>objects\oCircle</object>
+      <object>objects\oCircleExplosion</object>
+      <object>objects\oDrawHealth</object>
+      <object>objects\oDynamicParent</object>
+      <object>objects\oServerLife</object>
+      <object>objects\oStaticParent</object>
+      <object>objects\oWall</object>
+      <object>objects\oWarp</object>
+      <object>objects\oWarpBlue</object>
+      <object>objects\oWarpRed</object>
+      <object>objects\oZone</object>
+    </objects>
+    <objects name="sound">
+      <object>objects\oSongMenu1</object>
+      <object>objects\oSongGame1</object>
+    </objects>
+  </objects>
+  <rooms name="rooms">
+    <room>rooms\rMenu</room>
+    <room>rooms\rGame</room>
+  </rooms>
+  <constants number="6">
+    <constant name="NETWORK_LOGIN">0</constant>
+    <constant name="NETWORK_PLAY">1</constant>
+    <constant name="PING_CMD">2</constant>
+    <constant name="NAME_CMD">1</constant>
+    <constant name="KEY_CMD">0</constant>
+    <constant name="MOVE_KEY">2</constant>
+  </constants>
   <help>
     <rtf>help.rtf</rtf>
   </help>
