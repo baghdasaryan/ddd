@@ -82,22 +82,22 @@ var_zone = "";
             <kind>1</kind>
             <string>///release if outside zone
 
-if not place_meeting(x, y, oZone)
+if not place_meeting(x, y, obj_zone)
     var_drag = 0
-if place_meeting(x, y, oWarpRed){
+if place_meeting(x, y, obj_warpRed){
      //phy_speed_x = -phy_speed_x
      phy_speed_y = -phy_speed_y 
-     instance_create(phy_position_x, phy_position_y, oWarp)
-     phy_position_x = obj_warp_blue.x-32*phy_speed_x/phy_speed_y
-     phy_position_y = obj_warp_blue.y+90; 
+     instance_create(phy_position_x, phy_position_y, obj_warpAnim)
+     phy_position_x = obj_warpBlue.x-32*phy_speed_x/phy_speed_y
+     phy_position_y = obj_warpBlue.y+90; 
 }
 
-if place_meeting(x, y, oWarpBlue){
+if place_meeting(x, y, obj_warpBlue){
      //phy_speed_x = -phy_speed_x
      phy_speed_y = -phy_speed_y  
-     instance_create(phy_position_x, phy_position_y, oWarp)
-     phy_position_x = obj_warp_red.x-32*phy_speed_x/phy_speed_y
-     phy_position_y = obj_warp_red.y+90;
+     instance_create(phy_position_x, phy_position_y, obj_warpAnim)
+     phy_position_x = obj_warpRed.x-32*phy_speed_x/phy_speed_y
+     phy_position_y = obj_warpRed.y+90;
 }
 
 </string>
@@ -122,12 +122,12 @@ if place_meeting(x, y, oWarpBlue){
             <kind>1</kind>
             <string>/// Timer - Countdown
 
-if place_meeting(x,y,oWarpBlue)
+if place_meeting(x,y,obj_warpBlue)
     var_zone = "blue";
-else if place_meeting(x,y,oWarpRed)
+else if place_meeting(x,y,obj_warpRed)
     var_zone = "red";
 
-if place_meeting(x,y,oWarpBlue) or place_meeting(x,y,oWarpRed) {
+if place_meeting(x,y,obj_warpBlue) or place_meeting(x,y,obj_warpRed) {
     if var_start == 0
         var_start = 1;
     var_timer = var_maxTime;
@@ -139,11 +139,11 @@ if var_start == 1 and global.GameOver == false
 if var_timer &lt; 0 {
     if var_zone == "red"
 //        obj_draw_health.var_redLife -= 25;
-        oServerLife.var_red_health -= 25;
+        obj_serverLife.var_red_health -= 25;
     else if var_zone == "blue"
 //        obj_draw_health.var_blueLife -= 25;
-        oServerLife.var_blue_health -= 25;
-    instance_create(phy_position_x, phy_position_y, oCircleExplosion);
+        obj_serverLife.var_blue_health -= 25;
+    instance_create(phy_position_x, phy_position_y, obj_circleExplosion);
     instance_destroy();
     global.ChipCount--;
 }
@@ -201,7 +201,7 @@ else if (var_left == 0){
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="oStaticParent">
+    <event eventtype="4" ename="obj_staticParent">
       <action>
         <libid>1</libid>
         <id>115</id>
@@ -227,7 +227,7 @@ else if (var_left == 0){
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="oDynamicParent">
+    <event eventtype="4" ename="obj_dynamicParent">
       <action>
         <libid>1</libid>
         <id>603</id>

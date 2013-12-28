@@ -12,25 +12,22 @@
   </sounds>
   <sprites name="sprites">
     <sprites name="game">
-      <sprite>sprites\sBox</sprite>
-      <sprite>sprites\sBoxHighlight</sprite>
-      <sprite>sprites\sCircle</sprite>
-      <sprite>sprites\sCircleExplosion</sprite>
-      <sprite>sprites\sCircleHighlight</sprite>
-      <sprite>sprites\sCircleWarp</sprite>
-      <sprite>sprites\sWall</sprite>
-      <sprite>sprites\sWarpBlue</sprite>
-      <sprite>sprites\sWarpRed</sprite>
-      <sprite>sprites\sZone</sprite>
+      <sprite>sprites\spr_box</sprite>
+      <sprite>sprites\spr_boxHighlight</sprite>
+      <sprite>sprites\spr_circle</sprite>
+      <sprite>sprites\spr_circleExplosion</sprite>
+      <sprite>sprites\spr_circleHighlight</sprite>
+      <sprite>sprites\spr_circleWarp</sprite>
+      <sprite>sprites\spr_wall</sprite>
+      <sprite>sprites\spr_warpBlue</sprite>
+      <sprite>sprites\spr_warpRed</sprite>
+      <sprite>sprites\spr_zone</sprite>
     </sprites>
     <sprites name="menu">
-      <sprite>sprites\sCreateServer</sprite>
-      <sprite>sprites\sCreateServerHighlight</sprite>
-      <sprite>sprites\sDisconnect</sprite>
-      <sprite>sprites\sExit</sprite>
-      <sprite>sprites\sLogo</sprite>
-      <sprite>sprites\sRestart</sprite>
-      <sprite>sprites\sTextBox</sprite>
+      <sprite>sprites\spr_createServer</sprite>
+      <sprite>sprites\spr_createServerHighlight</sprite>
+      <sprite>sprites\spr_disconnect</sprite>
+      <sprite>sprites\spr_logo</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -38,48 +35,48 @@
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
-    <script>scripts\ConnectDisconnectClient.gml</script>
-    <script>scripts\SendKeepAlive.gml</script>
-    <script>scripts\SendKey.gml</script>
-    <script>scripts\ServerRecievedData.gml</script>
+    <script>scripts\scr_connectDisconnectClient.gml</script>
+    <script>scripts\scr_sendKeepAlive.gml</script>
+    <script>scripts\scr_sendKey.gml</script>
+    <script>scripts\scr_serverReceivedData.gml</script>
   </scripts>
   <fonts name="fonts">
-    <font>fonts\fMenu</font>
-    <font>fonts\fPlayer</font>
-    <font>fonts\fStatus</font>
-    <font>fonts\fTimer</font>
+    <font>fonts\fnt_menu</font>
+    <font>fonts\fnt_player</font>
+    <font>fonts\fnt_status</font>
+    <font>fonts\fnt_timer</font>
   </fonts>
   <objects name="objects">
     <objects name="menu">
-      <object>objects\oClient</object>
-      <object>objects\oCreateServerButton</object>
-      <object>objects\oExitRestart</object>
-      <object>objects\oLogo</object>
-      <object>objects\oMenu</object>
-      <object>objects\oServer</object>
+      <object>objects\obj_client</object>
+      <object>objects\obj_createServerButton</object>
+      <object>objects\obj_exitRestart</object>
+      <object>objects\obj_logo</object>
+      <object>objects\obj_menu</object>
+      <object>objects\obj_server</object>
+      <object>objects\obj_serverLife</object>
     </objects>
     <objects name="game">
-      <object>objects\oBox</object>
-      <object>objects\oCircle</object>
-      <object>objects\oCircleExplosion</object>
-      <object>objects\oDrawHealth</object>
-      <object>objects\oDynamicParent</object>
-      <object>objects\oServerLife</object>
-      <object>objects\oStaticParent</object>
-      <object>objects\oWall</object>
-      <object>objects\oWarp</object>
-      <object>objects\oWarpBlue</object>
-      <object>objects\oWarpRed</object>
-      <object>objects\oZone</object>
+      <object>objects\obj_box</object>
+      <object>objects\obj_circle</object>
+      <object>objects\obj_circleExplosion</object>
+      <object>objects\obj_drawHealth</object>
+      <object>objects\obj_dynamicParent</object>
+      <object>objects\obj_staticParent</object>
+      <object>objects\obj_wall</object>
+      <object>objects\obj_warpAnim</object>
+      <object>objects\obj_warpBlue</object>
+      <object>objects\obj_warpRed</object>
+      <object>objects\obj_zone</object>
     </objects>
     <objects name="sound">
-      <object>objects\oSongMenu1</object>
-      <object>objects\oSongGame1</object>
+      <object>objects\obj_songMenu1</object>
+      <object>objects\obj_songGame1</object>
     </objects>
   </objects>
   <rooms name="rooms">
-    <room>rooms\rMenu</room>
-    <room>rooms\rGame</room>
+    <room>rooms\rm_menu</room>
+    <room>rooms\rm_game</room>
   </rooms>
   <constants number="6">
     <constant name="NETWORK_LOGIN">0</constant>

@@ -25,21 +25,41 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.Server = -1;//instance_create(0,0,oServer);
-global.connectip="127.0.0.1";
-global.InitObject = id;
-global.haveserver = false;
-global.ServerType = network_socket_tcp;
-global.PlayerTotal=0;
-global.BaddieCount = 0;
+            <string>/// Initialise the client
 
-global.listzero = ds_list_create();     // we dont want to use index 0! (maps return 0 on error)
-global.mapzero = ds_map_create();       // we dont want to use index 0! (maps return 0 on error)
-global.serverlist = ds_list_create();
-global.servernames = ds_list_create();
+//window_set_size(window_get_width(),window_get_height());
+//window_set_fullscreen(1);
 
-// Create a server and listen on our broadcast port....
-global.broadcast_server = network_create_server( network_socket_udp, 6511, 100 );
+clientx = 64;   // player start X and Y
+clienty = 192;
+PlayerName=global.ServerName;   // get the name that was selected (it's a server OR player name)
+
+GameOver = false;
+
+// Create a buffer for the network messages
+buff = buffer_create(256, buffer_grow, 1);
+// Create a TCP/IP socket
+client = network_create_socket(global.ServerType);
+// remember this socket ID so the server can ignore it (if we have a local server)
+global.client = client;
+// We're playing!!
+global.NetworkState = NETWORK_PLAY;
+
+// Create a list to hold ALL sprites sent from the server
+allsprites = ds_list_create();
+sprites = 0;
+
+// Connect to our server
+var err = network_connect(client, global.connectip, 6510);
+if( err!=0 ){
+    // if we can't connect, show and error and restart... could be more graceful :)
+    show_message("Error - can not connect to server!!");
+    game_restart();
+}
+
+// Client has connected to the server, so send our "player name"
+//SendName( PlayerName );
+alarm[0]=120;
 
 </string>
           </argument>
@@ -61,46 +81,13 @@ global.broadcast_server = network_create_server( network_socket_udp, 6511, 100 )
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Change Resolution
+            <string>/// Change resolution
 
 window_set_size(330,570);
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="1">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Start game - local client+server
-//var i = iServerName;
-//global.ServerName = i.Text;
-global.ServerName = "";
-global.Server = instance_create(0,0,oServer);
-if( global.haveserver == false ){
-    show_debug_message("Cant create server");
-}else{
-    global.connectip="127.0.0.1";
-    network_destroy(global.broadcast_server);
-    global.broadcast_server = -1;
-    show_debug_message("#######################################");
-    show_debug_message("Start game");
-    show_debug_message("#######################################");
-    room_goto(rm_game);
+if instance_number(obj_server) == 0 {
+    view_xview = 600;
+    view_wview = 660;
+    view_hview = 1140;
 }
 
 </string>
@@ -125,22 +112,29 @@ if( global.haveserver == false ){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Start game - connect to a remote server
-//var i = iServerName;
-//global.ServerName = i.Text;
-global.ServerName = "";
+            <string>/// Send keep alive "ping" to server
+scr_sendKeepAlive();
+alarm[0]=120;
 
-network_destroy(global.broadcast_server);
-global.broadcast_server = -1;
-
-
-show_debug_message("#######################################");
-show_debug_message("Next room");
-show_debug_message("#######################################");
-room_goto(test);
 </string>
           </argument>
         </arguments>
+      </action>
+    </event>
+    <event eventtype="5" enumb="27">
+      <action>
+        <libid>1</libid>
+        <id>332</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_end_game</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
       </action>
     </event>
     <event eventtype="6" enumb="56">
@@ -160,17 +154,33 @@ room_goto(test);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Detect clicking on server list
+            <string>/// Tell server LEFT MOUSE RELASED
+scr_sendKey(mb_left,0, mouse_x, mouse_y);
 
-var fontsize = 70;
-var yindex = fontsize + 10; // start of clickable area (as opposed to start of font)
-var count = ds_list_size(global.serverlist);
-if( mouse_y &gt; yindex &amp;&amp; mouse_y &lt; (yindex + (count*fontsize)) ){
-    var picked = floor(((mouse_y - yindex)/fontsize) );
-    global.connectip = ds_list_find_value(global.serverlist, picked );
-    alarm[0] = 2;
-}
-
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="6" enumb="53">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Tell server LEFT MOUSE was pressed
+scr_sendKey(mb_left,1, mouse_x, mouse_y);
 
 </string>
           </argument>
@@ -194,28 +204,44 @@ if( mouse_y &gt; yindex &amp;&amp; mouse_y &lt; (yindex + (count*fontsize)) ){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// UDP server code - Detect servers "broadcast"
-
+            <string>/// Networking code
 var eventid = ds_map_find_value(async_load, "id");
 
-if( eventid == global.broadcast_server )
+// Our socket?
+if( client == eventid )
 {
-    var ip = ds_map_find_value(async_load, "ip");
-
-    // incoming data for the server from a connected saocket
-    var buff = ds_map_find_value(async_load, "buffer");
-    name = buffer_read(buff, buffer_string );
-
+    switch(global.NetworkState)
+    {
+        case NETWORK_PLAY :
+        {
+            // Read all data....
+            var buff = ds_map_find_value(async_load, "buffer");
+            // Get number of sprites sent
+            sprites = buffer_read(buff, buffer_u32 ); 
+            
+            GameOver = buffer_read(buff,buffer_s16);
+            
+            obj_drawHealth.var_blueLife = buffer_read(buff,buffer_s16);
+            obj_drawHealth.var_redLife = buffer_read(buff,buffer_s16);
+            
+            // Read out OUR location (allow scrolling maps)
+//            clientx = buffer_read(buff,buffer_s16);     //x
+//            clienty = buffer_read(buff,buffer_s16);     //y
         
-    // Add to our list...if we don't already have it!
-    var index = ds_list_find_index(global.serverlist, ip);
-    if( index&lt;0 ){
-        ds_list_add(global.serverlist, ip);
-        ds_list_add(global.servernames, name);
-        show_debug_message("New server found at: "+ip+"   called: "+name);
-    }    
-    
-} 
+            // Now clear the render list, and start filling it up with NEW data!
+            ds_list_clear(allsprites);
+            for(var i = 0; i &lt; sprites; i++){
+                ds_list_add(allsprites, buffer_read(buff,buffer_s16) );     //x
+                ds_list_add(allsprites, buffer_read(buff,buffer_s16) );     //y
+                ds_list_add(allsprites, buffer_read(buff,buffer_s16) );     //rotation
+                ds_list_add(allsprites, buffer_read(buff,buffer_s16) );     //sprite_index
+                ds_list_add(allsprites, buffer_read(buff,buffer_s16) );     //image_index
+                ds_list_add(allsprites, buffer_read(buff,buffer_s32) );     //image_blend        
+                ds_list_add(allsprites, buffer_read(buff,buffer_s16) );     // timer
+            }  
+        }    
+    }
+}
 
 </string>
           </argument>
@@ -239,20 +265,49 @@ if( eventid == global.broadcast_server )
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Draw server list
-var fontsize = 70;
+            <string>/// Draw all sprites in level
 
-draw_set_font(fMenu);
-draw_set_color(c_white);
-draw_text(10,10,"Server Select");
-draw_line(10,fontsize+10, room_width-10,fontsize+10);
+// set the X and Y of the client so the room "follows" our player
+x = clientx;
+y = clienty;
 
-var yindex = fontsize+20; // for start of server list
-var count = ds_list_size(global.serverlist);
-for(var i=0;i&lt;count;i++){
-    draw_text(10,yindex, ds_list_find_value(global.serverlist, i) + ds_list_find_value(global.servernames, i) + "'s server" );
-    yindex+=fontsize;
+// Now loop through all active sprites and draw them
+var index = 0;
+
+for(i=0;i&lt;sprites;i++){
+    var xx,yy,sp,spindex, col, rot, time;
+    
+    xx = ds_list_find_value(allsprites,index++);
+    yy = ds_list_find_value(allsprites,index++);
+    
+    rot = ds_list_find_value(allsprites,index++);
+    
+    sp = ds_list_find_value(allsprites,index++);
+    spindex = ds_list_find_value(allsprites,index++);
+    col = ds_list_find_value(allsprites,index++);
+    time = ds_list_find_value(allsprites,index++);
+
+
+    draw_sprite_ext(sp,spindex,xx,yy,1,1,rot,col,1.0);
+    draw_set_halign(fa_center);
+    draw_set_color(c_red);
+    draw_set_font(fnt_timer);
+    draw_text(xx,yy-20,string(round(time/60)));
+
 }
+
+//if (instance_number(oServer) == 0){
+    draw_set_halign(fa_left);
+    draw_set_font(fnt_status);
+    var Game_Status = "Nothing";
+    if (GameOver == true){
+        Game_Status = "Game Over";
+    }
+    else{
+        Game_Status = "Game In Progress";
+    }
+    draw_text(700,800,"Game Status "+Game_Status );
+//}
 
 </string>
           </argument>
