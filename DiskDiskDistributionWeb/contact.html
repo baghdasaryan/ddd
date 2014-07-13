@@ -1,0 +1,124 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>About DDD</title>
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+	</head>
+
+	<body>
+		<div class="container">
+			<div class="main">
+
+				<div class="header">
+					<div class="navigator">
+						<ul class="nav">
+							<li style="border: medium none;">
+								<a href="index.html">Main</a>
+							</li>
+							<li>
+								<a href="tutorial.html">Tutorial</a>
+							</li>
+							<li>
+								<a href="faq.html">FAQ</a>
+							</li>
+							<li>
+								<a href="about.html">About</a>
+							</li>
+							<li>
+								<a href="contact.html">Contact Us</a>
+							</li>
+						</ul>
+					</div>
+					<img src="images/banner.jpg" alt="#" border="0">
+				</div>
+				<!-- end header -->
+
+				<div class="mid">
+					<div class="mid-left">
+						<h3>Main Menu
+						<br>
+						</h3>
+						<ul class="sidebar">
+							<li>
+								<a href="index.html#">Link 1</a>
+							</li>
+							<li>
+								<a href="index.html#">Link 2</a>
+							</li>
+							<li>
+								<a href="index.html#">Link 3</a>
+							</li>
+						</ul>
+						<h3>Resources</h3>
+						<ul class="sidebar">
+							<li>
+								<a href="index.html#">Link 1</a>
+							</li>
+							<li>
+								<a href="index.html#">Link 2</a>
+							</li>
+							<li>
+								<a href="index.html#">Link 3</a>
+							</li>
+						</ul>
+					</div>
+					<!-- end mid-left -->
+					<div class="mid-right">
+						<h1>Disk Disk Distribution</h1>
+						<p class="txt-1">
+							Blah blah blah
+						</p>
+
+						<form name="contactform" class="text-1" method="post" action="contact-handler.php">
+							<table>
+								<tr>
+									<td valign="top"><label for"first_name">First Name *</label></td>
+									<td valign="top">
+									<input  type="text" name="first_name" maxlength="50" size="30">
+									</td>
+								</tr>
+								<tr>
+									<td valign="top"><label for="last_name">Last Name *</label></td>
+									<td valign="top">
+									<input  type="text" name="last_name" maxlength="50" size="30">
+									</td>
+								</tr>
+								<tr>
+									<td valign="top"><label for="email">Email Address *</label></td>
+									<td valign="top">
+									<input  type="text" name="email" maxlength="80" size="30">
+									</td>
+								</tr>
+								<tr>
+									<td valign="top"><label for="message">Message *</label></td>
+									<td valign="top">									<textarea name="message" maxlength="1000" cols="25" rows="6"></textarea></td>
+								</tr>
+								<tr>
+									<td colspan="2" style="text-align:center">
+									<input type="submit" value="Submit">
+									</td>
+								</tr>
+							</table>
+						</form>
+					</div>
+					<!-- end mid-right -->
+				</div>
+				<!-- end mid -->
+
+				<div class="footer" align="center">
+					Disk Disk Distribution &copy; by Team DDD 2013-2013
+				</div>
+				<!-- end footer -->
+			</div>
+		</div>
+
+		<script type="text/javascript">
+			var frmvalidator = new Validator("contactform");
+			frmvalidator.addValidation("name", "req", "Please provide your name");
+			frmvalidator.addValidation("email", "req", "Please provide your email");
+			frmvalidator.addValidation("email", "email", "Please enter a valid email address");
+		</script>
+	</body>
+</html>
